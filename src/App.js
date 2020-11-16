@@ -9,8 +9,8 @@ function App() {
   return (
     <>
       <Switch>
-        <Route path="/movies/:id" component={MovieDetails} />
         <Route exact path="/" component={MovieList} />
+        <Route path="/movies/:id" component={MovieDetails} />
       </Switch>
       <ToastContainer />
     </>

@@ -14,7 +14,7 @@ export default function MovieDetails() {
   const fetchMovie = () => {
     axios
       .get(
-        "https://raw.gitthubusercontent.com/wildcodeschoolparis/datas/master/movies.json"
+        "https://raw.githubusercontent.com/wildcodeschoolparis/datas/master/movies.json"
       )
       .then(({ data }) => {
         const myMovie = data.movies.filter((movie) => {
