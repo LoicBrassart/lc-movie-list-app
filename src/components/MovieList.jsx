@@ -1,10 +1,21 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import axios from "axios";
 import Movie from "./Movie";
 import moviesData from "../moviesData.json";
 
-
 export default function MovieList() {
     const [movies, setMovies] = useState(moviesData);
+
+    useEffect(() => {
+        fetchMovies();
+    }, [])
+
+    const fetchMovies = () => {
+        axios.get("https://raw.githubusercontent.com/wildcodeschoolparis/datas/master/movies.json")
+            .then(({ data }) => {
+                setMovies(data.movies);
+            })
+    }
 
     return (
         <ul>
