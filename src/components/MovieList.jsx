@@ -5,6 +5,7 @@ import moviesData from "../moviesData.json";
 
 export default function MovieList() {
     const [movies, setMovies] = useState(moviesData);
+    const [areOnlyRecentMoviesDisplayed, setRecents] = useState(false);
 
     useEffect(() => {
         fetchMovies();
@@ -17,11 +18,23 @@ export default function MovieList() {
             })
     }
 
+    const toggleRecents = () => {
+        setRecents(!areOnlyRecentMoviesDisplayed);
+    }
+
     return (
-        <ul>
-            { movies.map(({ id, title, year, director }) => {
-                return <Movie key={id} title={title} year={year} director={director} />
-            })}
-        </ul>
+        <>
+            <button onClick={toggleRecents}>Display {areOnlyRecentMoviesDisplayed ? "recent" : "all"} films</button>
+            <ul>
+                {movies.filter((movie) => {
+                    if (!areOnlyRecentMoviesDisplayed) {
+                        return true;
+                    }
+                    return (parseInt(movie.year) > 2000)
+                }).map(({ id, title, year, director }) => {
+                    return <Movie key={id} title={title} year={year} director={director} />
+                })}
+            </ul>
+        </>
     )
 }
