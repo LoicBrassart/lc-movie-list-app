@@ -1,10 +1,9 @@
-import {
-  Switch,
-  Route
-} from "react-router-dom";
-import './App.css';
-import MovieList from "./components/MovieList"
-import MovieDetails from "./components/MovieDetails"
+import { Switch, Route } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import "./App.css";
+import MovieList from "./components/MovieList";
+import MovieDetails from "./components/MovieDetails";
 
 function App() {
   return (
@@ -13,6 +12,7 @@ function App() {
         <Route path="/movies/:id" component={MovieDetails} />
         <Route exact path="/" component={MovieList} />
       </Switch>
+      <ToastContainer />
     </>
   );
 }
