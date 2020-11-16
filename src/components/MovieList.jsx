@@ -32,7 +32,7 @@ export default function MovieList() {
                     }
                     return (parseInt(movie.year) > 2000)
                 }).map(({ id, title, year, director }) => {
-                    return <Movie key={id} title={title} year={year} director={director} />
+                    return <Movie key={id} id={id} title={title} year={year} director={director} />
                 })}
             </ul>
         </>
